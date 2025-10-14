@@ -1,0 +1,156 @@
+
+.header-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    list-style: none;
+    text-decoration: none;
+    position: sticky;
+    background-color: rgb(47, 47, 238);
+    border-radius: 20px;
+    text-align: start;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    list-style: none;
+   
+}
+
+.nav-btn {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #07ece0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: justify;
+    text-align: left;
+    object-fit: cover;
+    width: 100px;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #11a6e0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    left: 0;
+    margin-bottom: 1000px;
+}
+
+#Juegos {
+    text-align: center;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: justify;
+    object-fit: cover;
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #11a6e0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 1000px;
+}
+
+.game-info p {
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.game-info h2 {
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.game-info img {
+    width: 130px;
+    height: 90px;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.game-info #add-to-wishlist{
+    width: 70px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #46ce07;
+    color: #fff;
+    border: 1px solid #07ec4c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-info #remove-from-wishlist{
+    width: 70px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10px;
+    cursor: pointer;    
+    background-color: #ce0707;
+    color: #fff;
+    border: 1px solid #ec0707;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-info #add-edit-review{
+    width: 75px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #07a6ec;
+    color: #fff;
+    border: 1px solid #074cec;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-info #view-review{
+    width: 70px;
+    height: 40px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #a6ec07;
+    color: #fff;
+    border: 1px solid #4cec07;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
