@@ -1,0 +1,177 @@
+.header-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 10px;
+    padding: 10px;
+    color: #fa7305;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+    position: fixed;
+    background: linear-gradient(100deg, #0b5bf0, #032080);
+    border-radius: 20px;
+    text-align: start;
+    width: 100%;
+    
+    top: 0;
+    z-index: 1;
+    list-style: none;
+   }
+
+.navbar btn-game span {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgb(242, 162, 12);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.navbar btn-game.active {
+    display: flex;
+}
+
+/* Estilos para la lista desplegable de juegos */
+.favorites-dropdown {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 250px;
+    background: #f18407;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.favorites-dropdown h3 {
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.favorites-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favorites-dropdown li {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.games-dropdown {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 250px;
+    background: #19b405;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.games-dropdown h3 {
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.games-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.games-dropdown li {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.games-dropdown li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    
+}
+
+.nav-btn {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #07ece0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-game {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000000;
+    background-color: #19b405;
+    border: 1px solid #05881b;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-game:hover {
+    background-color: #03911a;
+}
+
+.btn-list {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000000;
+    background-color: #f18407;
+    border: 1px solid #be7404;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-list:hover {
+    background-color: #cc6403;
+}
