@@ -158,7 +158,7 @@ function Games({ onFavoritesChanged }) {
                             <p>Horas Jugadas: {game.hours}</p>
                             <p>Rango: {game.level}</p>
                             <div className='progress-full'>
-                                <p>Progreso: {game.progress}</p>
+                                <p>Progreso: {game.progress}%</p>
                             </div>
                             <p>Tipo de Juego: {game.type}</p>
                             <div className="game-buttons">

@@ -22,7 +22,7 @@ mongoose.connect(MONGO_URL)
         level: {type: String, default: "beginner"},
         banner: {type: String, required: true},
         hours: {type: Number, required: true},
-        progress: {type: String, required: true},
+        progress: {type: Number, required: true},
         type: {type: String, required: true}
     })
     
