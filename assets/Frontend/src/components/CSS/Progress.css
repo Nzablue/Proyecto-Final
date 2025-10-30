@@ -12,7 +12,7 @@
     margin: 20px;
     padding: 20px;
     background: linear-gradient(90deg, #dc14ee, #7c047c);
-    border: 1px solid #11a6e0;
+    border: 1px solid #520076;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     left: 0;
@@ -24,3 +24,8 @@
     color: #fa7305;
 }
 
+body {
+    background-image: url('./public/ondagravit.gif');
+    background-attachment: fixed;
+    background-size: cover;
+}

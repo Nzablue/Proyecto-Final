@@ -19,7 +19,7 @@ const Header = ({ games, favorites }) => {
         <header id="header">
             <div className="header-container">
                 <nav className="navbar">
-                    <h1>GameTracker <br /> (No Oficial)</h1>
+                    <h1>GameTracker <br /> (Nazablue's Edition)</h1>
                     <div className="nav-buttons">
                         <button className="btn-game" onClick={toggleGamesList}>
                             <a>Todos los Juegos</a>

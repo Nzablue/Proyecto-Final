@@ -26,13 +26,28 @@ function App() {
             .catch(error => console.error('Error al obtener juegos:', error));
         reloadFavorites();
     }, []);
+
+    // calcular completados (100%) manejando número o string con '%'
+    const completedCount = games.filter((g) => {
+        const raw = g?.progress;
+        const val = typeof raw === 'number' ? raw : parseInt(String(raw).replace('%', ''), 10);
+        return val === 100;
+    }).length;
+
+    const incompleteCount = games.filter((g) => {
+        const raw = g?.progress;
+        const val = typeof raw === 'number' ? raw : parseInt(String(raw).replace('%', ''), 10);
+        return Number.isFinite(val) ? val < 100 : true;
+    }).length;
+        
+    const favoritesCount = favorites.length;
     return (
         <>
-        <Header games={games} favorites={favorites} />
-        <Progress />
-        <Games onFavoritesChanged={reloadFavorites} /> 
-        <FavoriteForm />
-        
+            <Header games={games} favorites={favorites} />
+            <Progress favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
+            <Games onFavoritesChanged={reloadFavorites} />
+            <FavoriteForm />
+            {/* ... existing code ... */}
         </>
     )
 }
