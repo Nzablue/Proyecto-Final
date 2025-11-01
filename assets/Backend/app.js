@@ -16,6 +16,7 @@ mongoose.connect(MONGO_URL)
     app.listen(port, () => {
         console.log(chalk.blue(`servidor escuchando en http://localhost:${port}`))
     });
+    
 
     //modelo games
     const Game = mongoose.model("Game", {
