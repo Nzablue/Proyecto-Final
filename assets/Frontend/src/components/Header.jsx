@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './CSS/Header.css'
 
-const Header = ({ games, favorites }) => {
+const Header = ({ games, favorites, onGameSelect }) => {
     const [showGamesList, setShowGamesList] = useState(false);
     const [showFavoritesList, setShowFavoritesList] = useState(false);
 
@@ -13,6 +13,10 @@ const Header = ({ games, favorites }) => {
         setShowFavoritesList(!showFavoritesList);
     };
    
+    const handleGameClick = (gameId) => {
+        onGameSelect && onGameSelect(gameId);
+        setShowGamesList(false); // Cerrar la lista después de seleccionar
+    };
     
     return (
         <>
@@ -36,7 +40,13 @@ const Header = ({ games, favorites }) => {
                         <ul>
                             {games.length > 0 ? (
                                 games.map((game) => (
-                                    <li key={game._id}>{game.name}</li>
+                                    <li 
+                                        key={game._id} 
+                                        onClick={() => handleGameClick(game._id)}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        {game.name}
+                                    </li>
                                 ))
                             ) : (
                                 <li>Cargando juegos...</li>

@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/Header'
 import Progress from './components/Progress'
 import Games from './components/Games'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import FavoriteForm from './components/FavoriteForm';
 
 
@@ -10,6 +10,7 @@ import FavoriteForm from './components/FavoriteForm';
 function App() {
     const [games, setGames] = useState([]);
     const [favorites, setFavorites] = useState([]);
+    const gamesComponentRef = useRef(null);
     const reloadFavorites = async () => {
         try {
             const res = await fetch('http://localhost:3000/api/favorites');
@@ -19,6 +20,13 @@ function App() {
             setFavorites([]);
         }
     };
+// Función para manejar la selección de juego desde el Header
+    const handleGameSelect = (gameId) => {
+        if (gamesComponentRef.current && gamesComponentRef.current.scrollToGame) {
+            gamesComponentRef.current.scrollToGame(gameId);
+        }
+    };
+
     useEffect(() => {
         fetch('http://localhost:3000/api/games')
             .then(res => res.json())
@@ -43,9 +51,9 @@ function App() {
     const favoritesCount = favorites.length;
     return (
         <>
-            <Header games={games} favorites={favorites} />
+            <Header games={games} favorites={favorites} onGameSelect={handleGameSelect} />
             <Progress favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
-            <Games onFavoritesChanged={reloadFavorites} />
+            <Games ref={gamesComponentRef} onFavoritesChanged={reloadFavorites} />
             <FavoriteForm />
             {/* ... existing code ... */}
         </>
