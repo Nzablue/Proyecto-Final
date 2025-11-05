@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react'
 import FavoriteForm from './components/FavoriteForm';
 
 
-
+// -------------------Componente Principal---------------------------
 function App() {
     const [games, setGames] = useState([]);
     const [favorites, setFavorites] = useState([]);
@@ -20,13 +20,17 @@ function App() {
             setFavorites([]);
         }
     };
+//--------------------Componente Principal---------------------------
+
 // Función para manejar la selección de juego desde el Header
     const handleGameSelect = (gameId) => {
         if (gamesComponentRef.current && gamesComponentRef.current.scrollToGame) {
             gamesComponentRef.current.scrollToGame(gameId);
         }
     };
+// Función para manejar la seleccion de juego desde el Header    
 
+//------------------Obtener juegos y favoritos al cargar la página----------------------
     useEffect(() => {
         fetch('http://localhost:3000/api/games')
             .then(res => res.json())
@@ -55,9 +59,10 @@ function App() {
             <Progress favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
             <Games ref={gamesComponentRef} onFavoritesChanged={reloadFavorites} />
             <FavoriteForm />
-            {/* ... existing code ... */}
+           
         </>
     )
 }
+//-------------------Obtener Juegos y Favoritos al Cargar la Página----------------------
 
 export default App
