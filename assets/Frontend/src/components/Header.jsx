@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './CSS/Header.css'
 
+// --------------------------Constantes--------------------------
 const Header = ({ games, favorites, onGameSelect }) => {
     const [showGamesList, setShowGamesList] = useState(false);
     const [showFavoritesList, setShowFavoritesList] = useState(false);
@@ -17,7 +18,9 @@ const Header = ({ games, favorites, onGameSelect }) => {
         onGameSelect && onGameSelect(gameId);
         setShowGamesList(false); // Cerrar la lista después de seleccionar
     };
+    // --------------------------Constantes--------------------------
     
+    // --------------------------Encabezado--------------------------
     return (
         <>
         <header id="header">
@@ -33,7 +36,9 @@ const Header = ({ games, favorites, onGameSelect }) => {
                         </button>
                     </div>
                 </nav>
+    {/* --------------------------Encabezado-------------------------- */}
 
+               {/* --------------------------Lista de Juegos-------------------------- */}
                 {showGamesList && (
                     <div className="games-dropdown">
                         <h3>Lista de Juegos</h3>
@@ -54,7 +59,9 @@ const Header = ({ games, favorites, onGameSelect }) => {
                         </ul>
                     </div>
                 )}
-
+                {/* --------------------------Lista de Juegos-------------------------- */}
+                
+                {/* --------------------------Lista de Favoritos-------------------------- */}
                 {showFavoritesList && (
                     <div className="favorites-dropdown">
                         <h3>Favoritos</h3>
@@ -70,6 +77,7 @@ const Header = ({ games, favorites, onGameSelect }) => {
                         </ul>
                     </div>
                 )}
+                {/* --------------------------Lista de Favoritos-------------------------- */}
             </div>
           
         </header>

@@ -4,7 +4,7 @@ import './CSS/Games.css';
 
 
 
-
+// --------------------------Constantes--------------------------
 const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
     const [games, setGames] = useState([]);
     const [favorites, setFavorites] = useState([]);
@@ -19,8 +19,9 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
 
     // Crear refs para cada juego
     const gameRefs = useRef({});
+// --------------------------Constantes--------------------------
     
-    // Exponer la función scrollToGame a través de la referencia
+    // --------------------------Scroll a Juego--------------------------
     useImperativeHandle(ref, () => ({
         scrollToGame: (gameId) => {
             if (gameRefs.current[gameId]) {
@@ -31,6 +32,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             }
         }
     }));
+    // --------------------------Scroll a Juego--------------------------
 
     const openFavoriteForm = (gameId) => {
         setSelectedGameId(gameId);
@@ -48,21 +50,27 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
         // por ejemplo, mediante un prop o contexto si lo necesitas.
     };
 
-    //Cargar Juegos
+    // --------------------------Cargar Juegos--------------------------
     useEffect(() => {
         fetch('http://localhost:3000/api/games')
             .then((res) => res.json())
             .then((data) => setGames(data))
             .catch(() => setGames([]));
     }, []);
+    // --------------------------Cargar Juegos--------------------------
 
+
+    // --------------------------Cargar Favoritos--------------------------
     useEffect(() => {
         fetch('http://localhost:3000/api/favorites')
             .then((res) => res.json())
             .then((data) => setFavorites(data))
             .catch(() => setFavorites([]));
     }, []);
+    // --------------------------Cargar Favoritos--------------------------
+    
 
+    // --------------------------Agregar a Favoritos--------------------------
     const addToFavorites = async (gameId) => {
         try {
             setSavingFavoriteId(gameId);
@@ -93,7 +101,10 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             setTimeout(() => setSaveMessage(''), 3000);
         }
     };
+    // --------------------------Agregar a Favoritos--------------------------
 
+
+    // --------------------------Eliminar de Favoritos--------------------------
     const removeFromFavorites = async (gameId) => {
         try {
             setRemovingFavoriteId(gameId);
@@ -112,7 +123,9 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             setTimeout(() => setRemoveMessage(''), 3000);
         }
     };
+    // --------------------------Eliminar de Favoritos--------------------------
 
+    // --------------------------Agregar/Editar Reseña--------------------------
     const addEditReview = async (gameId) => {
         try {
             setPostingReviewId(gameId);
@@ -124,7 +137,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
 
             // Prellenar prompts con valores existentes
             const initialText = existing?.review || '';
-            const initialRating = existing?.rating != null ? String(existing.rating) : '5';
+            const initialRating = existing?.rating != null ? String(existing.rating) : '';
 
             const reviewText = window.prompt('Escribe tu reseña:', initialText);
             if (reviewText === null) { setPostingReviewId(null); return; }
@@ -159,7 +172,9 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             setTimeout(() => setReviewMessage(''), 3000);
         }
     };
+    // --------------------------Agregar/Editar Reseña--------------------------
 
+    // --------------------------Ver Reseñas--------------------------
     const viewReview = async (gameId) => {
         try {
             const res = await fetch(`http://localhost:3000/api/reviews?gameId=${gameId}`);
@@ -179,19 +194,24 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             alert('Error al obtener reseñas');
         }
     };
+    // --------------------------Ver Reseñas--------------------------
 
+    // --------------------------Mensajes y Título-----------------------------
     return (
         <>
             {saveMessage && <div className="favorite-feedback">{saveMessage}</div>}
             {removeMessage && <div className="favorite-feedback">{removeMessage}</div>}
             {reviewMessage && <div className="favorite-feedback">{reviewMessage}</div>}
+    
 
             <div className="games-wrapper">
                 <h4 className="title"><strong>Todos los Juegos</strong></h4>
                 {games.map((game) => {
                     // Verificar si este juego ya está en favoritos
                     const isInFavorites = favorites.some(fav => fav.gameId === game._id);
-                    
+                    // -------------------Mensajes y Título---------------------------
+
+                    // -------------------Carta De Juego------------------------
                     return (
                     <div className="game-card" key={game._id} ref={el => gameRefs.current[game._id] = el}>
                         <div className="game-info">
@@ -224,6 +244,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                                         {removingFavoriteId === game._id ? 'Eliminando...' : 'Eliminar de Favoritos'}
                                     </button>
                                 )}
+                                {/* Botón de Añadir/Editar Reseña */}
                                 <button
                                     id="add-edit-review"
                                     onClick={() => addEditReview(game._id)}
@@ -232,12 +253,14 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                                     {postingReviewId === game._id ? 'Guardando...' : 'Añadir/Editar Reseña'}
                                     
                                 </button>
+                                {/* Botón de Ver Reseña */}
                                 <button
                                     id="view-review"
                                     onClick={() => viewReview(game._id)}
                                 >
                                     Ver Reseña
                                 </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -254,6 +277,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
         </>
     );
 });
+// --------------------------Carta de Juego--------------------------
 
 export default Games;
 

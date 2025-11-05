@@ -62,26 +62,6 @@
 
 
 
-.progress-not-full p{
-  font-size: 16px;
-  position: relative;
-  padding-bottom: 10px;
-  border: 4px solid #615e5e;
-  border-radius: 4px;
-  height: 10px;
-}
-
-.progress-not-full p::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 4px;
-  width: 60%;
-  background: linear-gradient(90deg, #23c7f0 0%, #6200ff 100%);
-  border-radius: 2px;
-}
-
 .game-info h2 {
     font-size: 20px;
     margin: 10px;
