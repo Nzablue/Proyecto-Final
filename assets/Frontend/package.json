@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://Nzablue.github.io/Proyecto-Final",
+ 
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
