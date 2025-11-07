@@ -1,4 +1,4 @@
-import './App.css'
+
 import Header from './components/Header'
 import Progress from './components/Progress'
 import Games from './components/Games'

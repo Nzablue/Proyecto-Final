@@ -7,7 +7,7 @@ const Progress = ({ favoritesCount = 0, completedCount = 0, incompleteCount = 0 
 
         // --------------------------Seccion de Favoritos--------------------------
         return (
-            <section class="progress-section">
+            <section className="progress-section">
                 <h1>Progreso</h1>
               
                 <section id="Wishlist">
