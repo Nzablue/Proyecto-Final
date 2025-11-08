@@ -175,3 +175,23 @@ h1 {
 .btn-list:hover {
     background-color: #cc6403;
 }
+
+.btn-create {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000000;
+    background-color: #f00ba4;
+    border: 1px solid #c40966;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-create:hover {
+    background-color: #c41288;
+}

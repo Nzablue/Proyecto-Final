@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from 'react'
 import FavoriteForm from './components/FavoriteForm';
 
 
+
 // -------------------Componente Principal---------------------------
 function App() {
     const [games, setGames] = useState([]);
@@ -27,6 +28,11 @@ function App() {
         if (gamesComponentRef.current && gamesComponentRef.current.scrollToGame) {
             gamesComponentRef.current.scrollToGame(gameId);
         }
+    };
+
+    const handleGameCreated = (newGame) => {
+        // Actualizar la lista de juegos con el nuevo juego
+        setGames(prevGames => [...prevGames, newGame]);
     };
 // Función para manejar la seleccion de juego desde el Header    
 
@@ -55,7 +61,7 @@ function App() {
     const favoritesCount = favorites.length;
     return (
         <>
-            <Header games={games} favorites={favorites} onGameSelect={handleGameSelect} />
+            <Header games={games} favorites={favorites} onGameSelect={handleGameSelect} onGameCreated={handleGameCreated} />
             <Progress favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
             <Games ref={gamesComponentRef} onFavoritesChanged={reloadFavorites} />
             <FavoriteForm />

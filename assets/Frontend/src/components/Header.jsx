@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './CSS/Header.css'
+import CreateGameRequirements from './CreateGameRequirements'
 
 // --------------------------Constantes--------------------------
 const Header = ({ games, favorites, onGameSelect }) => {
     const [showGamesList, setShowGamesList] = useState(false);
     const [showFavoritesList, setShowFavoritesList] = useState(false);
+    const [showRequirements, setShowRequirements] = useState(false);
 
     const toggleGamesList = () => {
         setShowGamesList(!showGamesList);
@@ -15,7 +17,13 @@ const Header = ({ games, favorites, onGameSelect }) => {
     };
    
     const handleGameClick = (gameId) => {
-        onGameSelect && onGameSelect(gameId);
+        if (gameId === null) {
+            // Si gameId es null, significa que se hizo clic en "Crear Juego"
+            setShowRequirements(true);
+        } else {
+            // Si hay un gameId válido, es un juego existente
+            onGameSelect && onGameSelect(gameId);
+        }
         setShowGamesList(false); // Cerrar la lista después de seleccionar
     };
     // --------------------------Constantes--------------------------
@@ -28,6 +36,9 @@ const Header = ({ games, favorites, onGameSelect }) => {
                 <nav className="navbar">
                     <h1>GameTracker <br /> (Nazablue's Edition)</h1>
                     <div className="nav-buttons">
+                        <button className="btn-create" onClick={() => handleGameClick(null)}>
+                            <a>Crear Juego</a>
+                        </button>
                         <button className="btn-game" onClick={toggleGamesList}>
                             <a>Todos los Juegos</a>
                         </button>
@@ -82,7 +93,12 @@ const Header = ({ games, favorites, onGameSelect }) => {
           
         </header>
 
-        
+        {/* Modal de Requisitos para Crear Juego */}
+        <CreateGameRequirements 
+            isOpen={showRequirements} 
+            onClose={() => setShowRequirements(false)} 
+            
+        />
         </>
     );
 };
