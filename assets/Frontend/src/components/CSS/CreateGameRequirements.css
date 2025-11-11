@@ -28,12 +28,12 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-bottom: 2px solid #31f00b;
+    border-bottom: 2px solid #ffffff;
     padding-bottom: 15px;
 }
 
 .requirements-header h2 {
-    color: #31f00b; 
+    color: #000000; 
     margin: 0;
     font-size: 24px;
 }
@@ -53,7 +53,7 @@
 }
 
 .close-button:hover {
-    color: #06cc10;
+    color: #000000;
 }
 
 .requirements-content {
@@ -63,7 +63,7 @@
 .step-indicator {
     text-align: center;
     font-size: 16px;
-    color: #31f00b; 
+    color: #000000; 
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -79,7 +79,7 @@
 
 .progress-fill {
     height: 100%;
-    background-color: #31f00b; 
+    background-color: #ffffff; 
     border-radius: 4px;
     transition: width 0.3s ease;
 }
@@ -88,19 +88,19 @@
     background-color: #a30481;
     padding: 25px;
     border-radius: 10px;
-    border: 2px solid #31f00b; 
+    border: 2px solid #ffffff; 
     margin-bottom: 20px;
 }
 
 .requirement-card h3 {
-    color: #31f00b; 
+    color: #000000; 
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 20px;
 }
 
 .requirement-card p {
-    color: #ffffff;
+    color: #000000;
     line-height: 1.6;
     margin: 0;
     font-size: 16px;
@@ -114,7 +114,7 @@
 }
 
 .nav-button {
-    background-color: #31f00b;  
+    background-color: #ffffff;  
     color: #000;
     border: none;
     padding: 10px 20px;
@@ -126,7 +126,7 @@
 }
 
 .nav-button:hover:not(:disabled) {
-    background-color: #28a745;
+    background-color: #bdbdbd;
 }
 
 .nav-button:disabled {
@@ -150,7 +150,7 @@
 }
 
 .dot.active {
-    background-color: #31f00b;  
+    background-color: #ffffff;  
 }
 
 .dot:hover:not(.active) {
@@ -186,7 +186,7 @@
     width: 95%;
     padding: 12px;
     font-size: 16px;
-    border: 2px solid #31f00b;         
+    border: 2px solid #ffffff;         
     border-radius: 8px;
     background-color: #6b0366;
     color: #ffffff;
@@ -195,7 +195,7 @@
 
 .requirement-input:focus {
     outline: none;
-    border-color: #31f00b;
+    border-color: #ffffff;
     box-shadow: 0 0 10px rgba(49, 240, 11, 0.3);
 }
 
@@ -214,19 +214,19 @@
     margin-top: 15px;
     padding: 10px;
     background-color: #2a2a2a;
-    border-left: 4px solid #31f00b;
+    border-left: 4px solid #ffffff;
     border-radius: 4px;
     font-size: 14px;
 }
 
 .field-preview strong {
-    color: #31f00b; 
+    color: #ffffff; 
 }
 
 /* Estilos para el botón de submit */
 .submit-button {
-    background-color: #46ce07;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -237,7 +237,7 @@
 }
 
 .submit-button:hover:not(:disabled) {
-    background-color: #03bb0c;
+    background-color: #c9c9c9;
 }
 
 .submit-button:disabled {
@@ -251,12 +251,12 @@
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    border: 2px solid #31f00b;
+    border: 2px solid #ffffff;
     margin-top: 20px;
 }
 
 .final-summary h4 {
-    color: #31f00b; 
+    color: #fc65ab; 
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 18px;
