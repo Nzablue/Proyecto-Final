@@ -59,10 +59,11 @@ function App() {
     }).length;
         
     const favoritesCount = favorites.length;
+    const gamesCount = games.length;
     return (
         <>
             <Header games={games} favorites={favorites} onGameSelect={handleGameSelect} onGameCreated={handleGameCreated} />
-            <Progress favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
+            <Progress gamesCount={gamesCount} favoritesCount={favoritesCount} completedCount={completedCount} incompleteCount={incompleteCount} />
             <Games ref={gamesComponentRef} onFavoritesChanged={reloadFavorites} />
             <FavoriteForm />
            

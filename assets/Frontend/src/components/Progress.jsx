@@ -2,13 +2,17 @@ import React from 'react'
 import './CSS/Progress.css'
 
 // ------------------------- Progreso -------------------------
-const Progress = ({ favoritesCount = 0, completedCount = 0, incompleteCount = 0 }) => {
+const Progress = ({ gamesCount = 0, favoritesCount = 0, completedCount = 0, incompleteCount = 0 }) => {
     // --------------------------Progreso--------------------------
 
         // --------------------------Seccion de Favoritos--------------------------
         return (
             <section className="progress-section">
                 <h1>Progreso</h1>
+
+                <section>
+                    <h4>Total de Juegos ({gamesCount})</h4>
+                </section>
               
                 <section id="Wishlist">
                     <h4>Lista de Favoritos ({favoritesCount})</h4>

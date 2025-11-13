@@ -163,11 +163,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
     // --------------------------Mensajes y Título-----------------------------
     return (
         <>
-            {saveMessage && <div className="favorite-feedback">{saveMessage}</div>}
-            {removeMessage && <div className="favorite-feedback">{removeMessage}</div>}
-            {reviewMessage && <div className="favorite-feedback">{reviewMessage}</div>}
-    
-
+          
             <div className="games-wrapper">
                 <h4 className="title"><strong>Todos los Juegos</strong></h4>
                 {games.map((game) => {
