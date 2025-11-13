@@ -1,0 +1,132 @@
+.review-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: rf-fade-in 0.2s ease;
+}
+
+.review-modal-1 {
+    background-color: #065bda;
+    border-radius: 14px;
+    padding: 24px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    animation: rf-slide-in 0.2s ease;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.review-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #111827;
+}
+
+.review-close-button {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 24px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-close-button:hover {
+    color: #111827;
+}
+
+.review-content {
+    margin-top: 8px;
+}
+
+.review-input {
+    width: 95%;
+    padding: 12px;
+    font-size: 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #01468b;
+    color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-input:focus {
+    outline: none;
+    border-color: #07a6ec;
+    box-shadow: 0 0 0 3px rgba(7, 166, 236, 0.15);
+}
+
+.review-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.review-submit {
+    background-color: #07a6ec;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.review-submit:hover:not(:disabled) {
+    background-color: #078fc9;
+}
+
+.review-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.review-cancel {
+    background-color: #e5e7eb;
+    color: #111827;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.review-cancel:hover {
+    background-color: #d1d5db;
+}
+
+@keyframes rf-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rf-slide-in {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
