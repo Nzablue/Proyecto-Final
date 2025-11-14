@@ -56,11 +56,10 @@ mongoose.connect(MONGO_URL)
 
      app.delete("/api/games/:id", async (req, res) => {
         const gameEliminado = await Game.findByIdAndDelete(req.params.id)
-        
         if(!gameEliminado){
             return res.status(404).json({error: "Game not found"})
         }
-
+        await Review.deleteMany({ gameId: req.params.id })
         res.status(200).json(gameEliminado)
      })
 
