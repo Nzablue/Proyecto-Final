@@ -158,7 +158,7 @@ app.delete("/api/reviews/:id", async (req, res) => {
 
 // NUEVO: modelo favorites con referencia a Game
 const FavoriteSchema = new mongoose.Schema({
-    gameId: { type: mongoose.Schema.Types.ObjectId, ref: "Game", required: true },
+    gameId: { type: mongoose.Schema.Types.ObjectId, ref: "Game", required: true, unique: true },
     note: { type: String },
     createdAt: { type: Date, default: Date.now }
 });
@@ -177,10 +177,18 @@ app.post("/api/favorites", async (req, res) => {
             return res.status(404).json({ error: "Game not found" })
         }
 
+        const exists = await Favorite.findOne({ gameId })
+        if (exists) {
+            return res.status(409).json({ error: "Favorite already exists for this game" })
+        }
+
         const fav = new Favorite({ gameId, note })
         await fav.save()
         res.status(201).json(fav)
     } catch (error) {
+        if (error && error.code === 11000) {
+            return res.status(409).json({ error: "Favorite already exists for this game" })
+        }
         res.status(400).json({ error: error.message })
     }
 })

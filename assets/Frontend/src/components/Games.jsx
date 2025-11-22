@@ -10,6 +10,7 @@ import './CSS/Games.css';
 const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
     const [games, setGames] = useState([]);
     const [favorites, setFavorites] = useState([]);
+    const [favoritesLoaded, setFavoritesLoaded] = useState(false);
     const [showFavoriteForm, setShowFavoriteForm] = useState(false);
     const [selectedGameId, setSelectedGameId] = useState('');
     const [savingFavoriteId, setSavingFavoriteId] = useState(null);
@@ -95,8 +96,14 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
     useEffect(() => {
         fetch('http://localhost:3000/api/favorites')
             .then((res) => res.json())
-            .then((data) => setFavorites(data))
-            .catch(() => setFavorites([]));
+            .then((data) => {
+                const ids = Array.isArray(data)
+                    ? data.map((f) => (typeof f.gameId === 'string' ? f.gameId : f.gameId?._id)).filter(Boolean)
+                    : [];
+                setFavorites(ids);
+                setFavoritesLoaded(true);
+            })
+            .catch(() => { setFavorites([]); setFavoritesLoaded(true); });
     }, []);
     // --------------------------Cargar Favoritos--------------------------
     
@@ -115,14 +122,20 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                 // Actualizar lista de favoritos por si acaso
                 fetch('http://localhost:3000/api/favorites')
                     .then(res => res.json())
-                    .then(data => setFavorites(Array.isArray(data) ? data : []));
+                    .then(data => {
+                        const ids = Array.isArray(data)
+                            ? data.map((f) => (typeof f.gameId === 'string' ? f.gameId : f.gameId?._id)).filter(Boolean)
+                            : [];
+                        setFavorites(ids);
+                    });
                 onFavoritesChanged && onFavoritesChanged();
                 return;
             }
             if (!res.ok) throw new Error('No se pudo guardar en favoritos');
              // Agregar el nuevo favorito a la lista local
             const newFav = await res.json();
-            setFavorites(prev => [...prev, newFav]);
+            const newId = typeof newFav.gameId === 'string' ? newFav.gameId : newFav.gameId?._id;
+            setFavorites(prev => (newId ? [...prev, newId] : prev));
             setSaveMessage('Juego agregado a favoritos');
             onFavoritesChanged && onFavoritesChanged();
         } catch (err) {
@@ -144,7 +157,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
             });
             if (!res.ok) throw new Error('No se pudo eliminar de favoritos');
              // Eliminar de la lista local de favoritos
-            setFavorites(prev => prev.filter(fav => fav.gameId !== gameId));
+            setFavorites(prev => prev.filter(id => id !== gameId));
             setRemoveMessage('Juego eliminado de favoritos');
             onFavoritesChanged && onFavoritesChanged();
         } catch (err) {
@@ -168,7 +181,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                 <h4 className="title"><strong>Todos los Juegos</strong></h4>
                 {games.map((game) => {
                     // Verificar si este juego ya está en favoritos
-                    const isInFavorites = favorites.some(fav => fav.gameId === game._id);
+                    const isInFavorites = favorites.includes(game._id);
                     // -------------------Mensajes y Título---------------------------
 
                     // -------------------Carta De Juego------------------------
@@ -184,8 +197,13 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                             </div>
                             <p>Tipo de Juego: {game.type}</p>
                             <div className="game-buttons">
-                                 {/* Mostrar botón "Agregar a favoritos" solo si NO está en favoritos */}
-                                {!isInFavorites && (
+                                {!favoritesLoaded && (
+                                    <button id="add-to-wishlist" disabled>
+                                        Cargando...
+                                    </button>
+                                )}
+                                {/* Mostrar botón "Agregar a favoritos" solo si NO está en favoritos */}
+                                {favoritesLoaded && !isInFavorites && (
                                     <button
                                         id="add-to-wishlist"
                                         onClick={() => addToFavorites(game._id)}
@@ -195,7 +213,7 @@ const Games = forwardRef(function Games({ onFavoritesChanged }, ref) {
                                     </button>
                                 )}
                                 {/* Mostrar botón "Eliminar de Favoritos" solo si está en favoritos */}
-                                {isInFavorites && (
+                                {favoritesLoaded && isInFavorites && (
                                     <button
                                         id="remove-from-wishlist"
                                         onClick={() => removeFromFavorites(game._id)}
